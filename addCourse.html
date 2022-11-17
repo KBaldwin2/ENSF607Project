@@ -12,27 +12,35 @@
     <h1>Course Registration</h1>
 
     <p>
-    <form action="/dummy" id="CourseList">
+    <form id="CourseList">
         <br>
         <label for="course">Select the course:</label>
-        <select name="course" class="list_options_courses">
-            <option value="Temp1">Temp1</option>
-            <option value="Temp2">Temp2</option>
-            <option value="Temp3">Temp3</option>
-        </select>
-        <br>
-        <label for="section">Select the section:</label>
-        <select name="section" class="list_options_sections">
-            <option value="Temp1">Temp1</option>
-            <option value="Temp2">Temp2</option>
-            <option value="Temp3">Temp3</option>
+        <select name="course" class="list_options_courses" id="courseIdList">
+            <option value="default">Select Option</option>
         </select>
         <br>
         <br>
-        <button style="margin:5px" , id="add_submit">Submit</button>
-        <button id="BackMenu">Menu</button>
+        <button style="margin:5px" , id="add_submit">Submit Course</button>
     </form>
     </p>
+
+    <p>
+        <form id="CourseSection">
+            <br>
+            <label for="section">Select the section:</label>
+            <select name="section" class="list_options_sections" id="courseSectionList">
+                <option value="Temp1">Temp1</option>
+                <option value="Temp2">Temp2</option>
+                <option value="Temp3">Temp3</option>
+            </select>
+            <br>
+            <br>
+            <button style="margin:5px" , id="add_submit">Submit</button>
+            <button id="BackMenu">Menu</button>
+        </form>
+        </p>
+    <script src="add.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
