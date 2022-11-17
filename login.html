@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registrationt</title>
+    <title>Student Registration</title>
 
 
 </head>
@@ -14,25 +14,27 @@
 <h1> Welcome to Student Registration </h1>
 <div>
 <p> If you are an existing student, please log in: </p>
-<form>
+<form id ="loginForm">
     <input type="text" id="fname" class="fadeIn second" name="fname" placeholder="First Name">
     <input type="text" id="lname" class="fadeIn second" name="lname" placeholder="Last Name">
     <input type="text" id="studentId" class="fadeIn second" name="studentId" placeholder="Student ID">
-    <input type="submit" class="fadeIn fourth" value="Log In">
+    <input id = "loginButton" type="submit" class="fadeIn fourth" value="Log In">
   </form>
+  <p id="LoginMessage"></p>
 </div>
 
 <div>
 <p> If you are a new student, please register: </p>
-<form>
+<form id="registerForm">
     <input type="text" id="fname" class="fadeIn second" name="fname" placeholder="First Name">
     <input type="text" id="lname" class="fadeIn second" name="lname" placeholder="Last Name">
     <input type="text" id="studentId" class="fadeIn second" name="studentId" placeholder="Student ID">
-    <input type="submit" class="fadeIn fourth" value="Register">
+    <input id = "registerButton" type="submit" class="fadeIn fourth" value="Register">
   </form>
 </div>
 
 <script src="login.js"></script>
+<script src="index.js"></script>
 
 </body>
 </html>
