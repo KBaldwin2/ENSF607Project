@@ -29,8 +29,8 @@ function create_course_list() {
 }
 
 function create_section_list(courseId) {
-    let sections = load_course_list().courseId;
-    return sections;
+    let courseSections = load_course_list()[courseId];
+    return courseSections;
 }
 
 //Format dropdown menus with courseIds
@@ -49,6 +49,15 @@ for(let i = 0; i < idList.length; i++) {
 //Filter to the sections offered for specific course
 //TODO: Use add.js action event handler to read what course was selected **hardcoded for testing
 sectionList = create_section_list("ENSF609");
+console.log(sectionList);
 
+let courseSections = document.getElementById('courseSectionList'), section=sectionList;
 
-//Format dropdown menus with sections - this needs to be dependent on courseIds
+//Format sections dropdown to only have sections for that course
+for(let i = 0; i< sectionList.length; i++) {
+    let option = document.createElement("OPTION"),
+                txt = document.createTextNode(sectionList[i]);
+    option.appendChild(txt);
+    courseSections.insertBefore(option, courseSections.lastChild);
+}
+
