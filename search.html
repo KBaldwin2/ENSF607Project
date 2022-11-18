@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Course</title>
+</head>
+
+<body>
+    <h1>Course Search</h1>
+
+    <p>
+    <form action="/dummy" id="CourseList">
+        <p>
+            <label for="course">Select the course:</label>
+            <select name="course" class="list_options_course">
+                <option value="Temp1">Temp1</option>
+                <option value="Temp2">Temp2</option>
+                <option value="Temp3">Temp3</option>
+            </select>
+            <button style="margin:5px" , id="searchcourse_submit">Submit</button>
+        <p>
+            <label for="CourseInfo">Results</label>
+            <br>
+            <textarea name="CourseInfo" id="courseinfo" cols="30" rows="10"
+                placeholder="Course Results Here"></textarea>
+        </p>
+    </form>
+    </p>
+</body>
+<button id="BackMenu">Menu</button>
+
+</html>
