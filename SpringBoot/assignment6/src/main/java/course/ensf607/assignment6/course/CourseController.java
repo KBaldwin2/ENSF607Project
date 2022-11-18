@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping(path = "api/v1/course")
 public class CourseController {
@@ -34,10 +33,20 @@ public class CourseController {
 
     @PutMapping("{courseId}/students/{studentId}")
     public Course enrollStudentToCourse(@PathVariable Long courseId,
-                                         @PathVariable Long studentId) {
+            @PathVariable Long studentId) {
         Course course = courseService.getCourseById(courseId);
         Student student = studentService.getStudentById(studentId);
         course.enrolledStudents(student);
+        courseService.updateCourse(course);
+        return course;
+    }
+
+    @DeleteMapping("{courseId}/students/{studentId}")
+    public Course deenrolStudentsfromCourse(@PathVariable Long courseId,
+            @PathVariable Long studentId) {
+        Course course = courseService.getCourseById(courseId);
+        Student student = studentService.getStudentById(studentId);
+        course.deenrolStudents(student);
         courseService.updateCourse(course);
         return course;
     }
