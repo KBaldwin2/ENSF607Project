@@ -16,7 +16,6 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
@@ -36,4 +35,5 @@ public class StudentService {
         }
         return studentById.get();
     }
+
 }
