@@ -5,7 +5,7 @@ console.log('index');
 //TODO: Figure out how to get the hard coded IP out of this
 //Load new html address
 function load_page(htmlFile) {
-    window.location.href = "http://127.0.0.1:5500/ENSF607Project/"+htmlFile;
+    window.location.href = "http://127.0.0.1:5500/SpringBoot/assignment6/src/main/resources/"+htmlFile;
 }
 
 //post to server
@@ -27,6 +27,7 @@ function postFetch(api, data) {
     })
     .then(data => {
         console.log(data);
+        
         //add a return data
     })
 }

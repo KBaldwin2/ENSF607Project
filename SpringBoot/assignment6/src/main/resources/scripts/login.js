@@ -40,6 +40,7 @@ loginForm.addEventListener('submit', function(evt) {
   //I am not sure if this is as simple as this??
   load_page("menu.html");
 
+
   });
 
 
