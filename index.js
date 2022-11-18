@@ -35,21 +35,7 @@ function postFetch(api, data) {
 //the format of data needs to be {key: [value1, value2]}
 function getFetch(api, data) {
     //fetch get
-    fetch(api, {
-        method:'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        } ,
-        body: JSON.stringify({
-            data
-        })
-    }).then(response => {
-        return response.json()
-    })
-    .then(data => {
-        console.log(data);
-        //add a return data
-    })
+    fetch(api)
 }
 
 //Delete from server
