@@ -11,9 +11,7 @@ function blankFieldAlert(formName) {
     }
   }
   return false;
-}   
-
-//TODO should have a function that sends information back to the server
+} 
 
 //LoginButton handler
 const loginForm = document.getElementById('loginForm');
