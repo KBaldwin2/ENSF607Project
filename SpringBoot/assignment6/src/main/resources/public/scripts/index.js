@@ -2,10 +2,14 @@
 
 console.log('index');
 
-//TODO: Figure out how to get the hard coded IP out of this
+//All api addresses
+const getAllStudentsAPI = "http://localhost:8080/api/v1/student";
+const addStudentAPI = "http://localhost:8080/api/v1/student";
+
+
 //Load new html address
 function load_page(htmlFile) {
-    window.location.href = "http://127.0.0.1:5500/SpringBoot/assignment6/src/main/resources/"+htmlFile;
+    window.location.href = "http://localhost:8080/"+htmlFile;
 }
 
 //post to server
@@ -14,36 +18,35 @@ function load_page(htmlFile) {
 
 function postFetch(api, data) {
     //fetch post
-    fetch(api, {
+    return fetch(api, {
         method:'POST',
         headers: {
             'Content-Type': 'application/json'
         } ,
         body: JSON.stringify({
-            data
+            data 
         })
     }).then(response => {
-        return response.json()
+        console.log(response.json())
     })
     .then(data => {
         console.log(data);
-        
-        //add a return data
     })
 }
 
 //get from server
-//the format of data needs to be {key: [value1, value2]}
-function getFetch(api, data) {
-    //fetch get
-    fetch(api)
+//returns data to console and can be used with an async/await function
+function getFetch(api) {
+    return fetch(api)
+            .then(response => response.json())
+            .then(data => console.log(data));
 }
 
 //Delete from server
 //the format of data needs to be {key: [value1, value2]}
 function deleteFetch(api, data) {
     //fetch delete
-    fetch(api, {
+    return fetch(api, {
         method:'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -60,6 +63,14 @@ function deleteFetch(api, data) {
     })
 }
 
+function searchStudent(data, id) {
+    for(var i; i<data.length; i++) {
+        if(data[i]['ucid']==id) {
+            return true;
+        }
 
+    }
+    return false;
+}
 
 

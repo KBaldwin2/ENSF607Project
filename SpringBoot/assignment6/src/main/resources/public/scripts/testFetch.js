@@ -4,10 +4,11 @@
 // .then(response => json_data = response.json())
 // .then(data =>  data[0]['id']);
 
-// //need to return inside a function
+//How to use data from a Promise
 // const printData = async () => {
-//     const value = await fetched;
-//     alert(value);
+//     const value = await fetchFunction();
+//     value is the data that is outputted by fetchfunction() and can be used however
+//  
 // };
 
 // printData();
