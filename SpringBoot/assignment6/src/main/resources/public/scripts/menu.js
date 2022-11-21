@@ -1,7 +1,6 @@
 console.log("menu.js");
 
 const menuForm = document.getElementById('menu');
-let studentsMenu = getFetch("http://localhost:8080/api/v1/student");
 
 menuForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
