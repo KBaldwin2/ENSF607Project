@@ -7,7 +7,7 @@ var api = "http://localhost:8080/api/v1/student/";
 let enrollments = document.getElementById('studentcourseinfo');
 
 async function fetchStudentEnrollments(api) {
-    const response = await fetch(api);
+    const response = await getFetch(api);
     return response.json();
 }
 

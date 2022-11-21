@@ -9,7 +9,7 @@ const addStudentAPI = "http://localhost:8080/api/v1/student";
 
 //Load new html address
 function load_page(htmlFile) {
-    window.location.href = "http://localhost:8080/"+htmlFile;
+    window.location.href = "http://localhost:8080/" + htmlFile;
 }
 
 //post to server
@@ -19,28 +19,26 @@ function load_page(htmlFile) {
 function postFetch(api, data) {
     //fetch post
     return fetch(api, {
-        method:'POST',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-        } ,
+        },
         body: JSON.stringify(
-            data 
+            data
         )
     }).then(response => {
         response.json();
     })
-    .then(data => {
-        data;
-    })
+        .then(data => {
+            data;
+        })
 }
 
 
 //get from server
 //returns data to console and can be used with an async/await function
-function getFetch(api) {
-    return fetch(api)
-            .then(response => response.json())
-            .then(data => data);
+async function getFetch(api) {
+    return await fetch(api)
 }
 
 //Delete from server
@@ -48,36 +46,36 @@ function getFetch(api) {
 function deleteFetch(api, data) {
     //fetch delete
     return fetch(api, {
-        method:'DELETE',
+        method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
-        } ,
+        },
         body: JSON.stringify({
             data
         })
     }).then(response => {
         return response.json()
     })
-    .then(data => {
-        console.log(data);
-        //add a return data
-    })
+        .then(data => {
+            console.log(data);
+            //add a return data
+        })
 }
 
 function searchStudent(id) {
     getFetch(getAllStudentsAPI)
-    .then(studentList => {studentList.find(student => 
-                          {
-                            console.log(student['ucid']);
-                            if(student['ucid'] == id) {
-                                console.log("ID FOUND");
-                                return true;
-                            }
-                            return false; 
-                            }
-                            )
-                        return true
-                    });
+        .then(studentList => {
+            studentList.find(student => {
+                console.log(student['ucid']);
+                if (student['ucid'] == id) {
+                    console.log("ID FOUND");
+                    return true;
+                }
+                return false;
+            }
+            )
+            return true
+        });
 }
 
 
