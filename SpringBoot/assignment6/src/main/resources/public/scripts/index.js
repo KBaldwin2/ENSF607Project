@@ -34,7 +34,8 @@ function postFetch(api, data) {
 //get from server
 //returns data to console and can be used with an async/await function
 async function getFetch(api) {
-    return await fetch(api)
+    let response = await fetch(api);
+    return response.json();
 }
 
 //Delete from server
