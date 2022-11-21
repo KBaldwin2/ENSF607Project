@@ -1,6 +1,7 @@
 console.log("menu.js");
 
 const menuForm = document.getElementById('menu');
+let studentsMenu = getFetch("http://localhost:8080/api/v1/student");
 
 menuForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
@@ -15,7 +16,6 @@ menuForm.addEventListener('submit', function(evt) {
         console.log(output[1]);
         menuOption = output[1];
     }
-    //NOTE I dont think anything needs to be sent back to the server for this page since it's just straight navigation
 
     switch(menuOption) {
         case "add_course":
