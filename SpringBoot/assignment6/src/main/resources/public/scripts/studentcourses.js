@@ -35,5 +35,5 @@ let submitButton = document.getElementById('BackMenu');
 
 submitButton.addEventListener('click', function (evt) {
     console.log("Button Clicked!")
-    load_page("addCourse.html");
+    load_page("Menu.html");
 });
