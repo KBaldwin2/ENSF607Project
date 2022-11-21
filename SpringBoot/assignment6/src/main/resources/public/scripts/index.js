@@ -2,7 +2,7 @@
 
 console.log('index');
 
-//All api addresses
+//All api endpoints
 const getAllStudentsAPI = "http://localhost:8080/api/v1/student";
 const addStudentAPI = "http://localhost:8080/api/v1/student";
 
@@ -23,23 +23,24 @@ function postFetch(api, data) {
         headers: {
             'Content-Type': 'application/json'
         } ,
-        body: JSON.stringify({
+        body: JSON.stringify(
             data 
-        })
+        )
     }).then(response => {
-        console.log(response.json())
+        response.json();
     })
     .then(data => {
-        console.log(data);
+        data;
     })
 }
+
 
 //get from server
 //returns data to console and can be used with an async/await function
 function getFetch(api) {
     return fetch(api)
             .then(response => response.json())
-            .then(data => console.log(data));
+            .then(data => data);
 }
 
 //Delete from server
@@ -63,14 +64,20 @@ function deleteFetch(api, data) {
     })
 }
 
-function searchStudent(data, id) {
-    for(var i; i<data.length; i++) {
-        if(data[i]['ucid']==id) {
-            return true;
-        }
-
-    }
-    return false;
+function searchStudent(id) {
+    getFetch(getAllStudentsAPI)
+    .then(studentList => {studentList.find(student => 
+                          {
+                            console.log(student['ucid']);
+                            if(student['ucid'] == id) {
+                                console.log("ID FOUND");
+                                return true;
+                            }
+                            return false; 
+                            }
+                            )
+                        return true
+                    });
 }
 
 
