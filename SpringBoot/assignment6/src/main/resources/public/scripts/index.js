@@ -5,7 +5,8 @@ console.log('index');
 //All api endpoints
 const getAllStudentsAPI = "http://localhost:8080/api/v1/student";
 const addStudentAPI = "http://localhost:8080/api/v1/student";
-
+const getAllCoursesAPI = "http://localhost:8080/api/v1/course";
+const addNewCourse = "http://localhost:8080/api/v1/course";
 
 //Load new html address
 function load_page(htmlFile) {
@@ -17,30 +18,24 @@ function load_page(htmlFile) {
 //the format of data needs to be {key: [value1, value2]}
 
 function postFetch(api, data) {
-    //fetch post
-    return fetch(api, {
-        method:'POST',
+    fetch(api, {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         } ,
         body: JSON.stringify(
             data 
         )
-    }).then(response => {
-        response.json();
     })
-    .then(data => {
-        data;
-    })
+    // .then(response => response.json())
+    // .then(data => console.log(data))
 }
-
 
 //get from server
 //returns data to console and can be used with an async/await function
 function getFetch(api) {
-    return fetch(api)
-            .then(response => response.json())
-            .then(data => data);
+    fetch(api).
+    then(response => console.log(response.json()));
 }
 
 //Delete from server
@@ -64,20 +59,6 @@ function deleteFetch(api, data) {
     })
 }
 
-function searchStudent(id) {
-    getFetch(getAllStudentsAPI)
-    .then(studentList => {studentList.find(student => 
-                          {
-                            console.log(student['ucid']);
-                            if(student['ucid'] == id) {
-                                console.log("ID FOUND");
-                                return true;
-                            }
-                            return false; 
-                            }
-                            )
-                        return true
-                    });
-}
+
 
 

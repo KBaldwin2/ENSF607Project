@@ -13,6 +13,7 @@ function blankFieldAlert(formName) {
   return false;
 } 
 
+
 //LoginButton handler
 const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
@@ -31,21 +32,10 @@ loginForm.addEventListener('submit', function(evt) {
   let name = loginForm.name.value;
   let password = loginForm.password.value;
   let studentId = loginForm.studentId.value;
-  //Search each ID for a matching ID
 
-  if(searchStudent(studentId)===true) {
-    console.log(studentId);
-    console.log("student found");
-    //load_page("menu.html");
-    return name, studentId;
-  }
+  getFetch(getAllStudentsAPI);
 
-  else {
-    console.log(studentId);
-    console.log("NO STUDENT FOUND");
-    alert("Invalid Credentials. Please try again or register if you are a new student.");
-    return -1;
-  }
+  //Search for student in database -- if found, login. If not found send alert saying invalid credentials.
   
   });
 
@@ -65,16 +55,12 @@ registerForm.addEventListener('submit', function(evt) {
     let password = registerForm.password.value;
     let studentId = registerForm.studentId.value;
 
-    if(searchStudent(studentId) == true) {
-      console.log("STUDENT FOUND");
-      alert("We found a profile matching this information. Please login.");
-      return -1;
-    }
+    postFetch(addStudentAPI, {'username': name, 'password': password, 'ucid': studentId});
+    load_page("menu.html");
+  //Search for student in database -- if found, say student exists and please login. 
+  //If not found send a post fetch to the server to add the student and redirect page.
 
-    else {
-      postFetch(addStudentAPI, {"username": name, "password": password, "ucid": studentId});
-      console.log("Student added");
-      // load_page("menu.html");
-    }
   
     });
+
+    //postFetch(addStudentAPI, {'username': "TEST", 'password': "hello", 'ucid': "99999"});

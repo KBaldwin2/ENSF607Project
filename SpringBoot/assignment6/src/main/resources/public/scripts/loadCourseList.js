@@ -1,54 +1,70 @@
 console.log('loadCourseList');
+// postFetch(addNewCourse, );
+// let courseIds = document.getElementById('courseIdList'), id=idList;
 
-//TODO Pull all courses from server
-function load_course_list() {
-    //the purpose of this function will be to pull all the courses from the database 
-    //format them as a dictionary {courseId1: [section1, section2], courseId2: [sec1, 2, 3], courseId3: [1]}
-    course_list = {"ENE612": [1, 2, 4], "ENG311": [1,2], "ENSF609": [1,2,3,4], "ENE222": [1]};
-    return course_list;
-}
+getFetch(getAllStudentsAPI)
+.then(courseList => {
+    courseList.forEach ( 
+    function(course) {
+        let option = document.createElement("OPTION"),
+            txt = document.createTextNode(course);
+        option.appendChild(txt);
+        courseIds.insertBefore(option, courseIds.lastChild);
+        }
+})
 
-//Create list of course Ids
-function create_course_list() {
-    let idList = [];
+// async function searchStudent(id) {
+//   let studentList = await getFetch(getAllStudentsAPI);
+//   let student = studentList.find(id);
+//   if(student == false) {
+//       return false;
+//   }
+//   return true;
+// }
 
-    for (key in load_course_list()) {
-        idList.push(key);
-    }   
 
-    console.log(idList);
-    return idList;
-}
 
-function create_section_list(courseId) {
-    let courseSections = load_course_list()[courseId];
-    return courseSections;
-}
+// //Create list of course Ids
+// function create_course_list() {
+//     let idList = [];
 
-//Format dropdown menus with courseIds
+//     for (key in load_course_list(getAllCoursesAPI)) {
+//         idList.push(key);
+//     }   
 
-idList = create_course_list();
-let courseIds = document.getElementById('courseIdList'), id=idList;
+//     console.log(idList);
+//     return idList;
+// }
 
-//Iterate through courseIds list and add each as an option in form
-for(let i = 0; i < idList.length; i++) {
-    let option = document.createElement("OPTION"),
-                txt = document.createTextNode(idList[i]);
-    option.appendChild(txt);
-    courseIds.insertBefore(option, courseIds.lastChild);
-}
+// function create_section_list(courseId) {
+//     let courseSections = load_course_list()[courseId];
+//     return courseSections;
+// }
 
-//Filter to the sections offered for specific course
-//TODO: Use add.js action event handler to read what course was selected **hardcoded for testing
-sectionList = create_section_list("ENSF609");
-console.log(sectionList);
+// //Format dropdown menus with courseIds
 
-let courseSections = document.getElementById('courseSectionList'), section=sectionList;
+// idList = create_course_list();
+// let courseIds = document.getElementById('courseIdList'), id=idList;
 
-//Format sections dropdown to only have sections for that course
-for(let i = 0; i< sectionList.length; i++) {
-    let option = document.createElement("OPTION"),
-                txt = document.createTextNode(sectionList[i]);
-    option.appendChild(txt);
-    courseSections.insertBefore(option, courseSections.lastChild);
-}
+// //Iterate through courseIds list and add each as an option in form
+// for(let i = 0; i < idList.length; i++) {
+//     let option = document.createElement("OPTION"),
+//                 txt = document.createTextNode(idList[i]);
+//     option.appendChild(txt);
+//     courseIds.insertBefore(option, courseIds.lastChild);
+// }
+
+// //Filter to the sections offered for specific course
+// //TODO: Use add.js action event handler to read what course was selected **hardcoded for testing
+// sectionList = create_section_list("ENSF609");
+// console.log(sectionList);
+
+// let courseSections = document.getElementById('courseSectionList'), section=sectionList;
+
+// //Format sections dropdown to only have sections for that course
+// for(let i = 0; i< sectionList.length; i++) {
+//     let option = document.createElement("OPTION"),
+//                 txt = document.createTextNode(sectionList[i]);
+//     option.appendChild(txt);
+//     courseSections.insertBefore(option, courseSections.lastChild);
+// }
