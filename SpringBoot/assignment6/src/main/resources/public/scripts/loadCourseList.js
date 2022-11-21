@@ -22,8 +22,8 @@ console.log('loadCourseList');
 //   return true;
 // }
 
-function load_course_list() {
-    let courseList = {"ENSF608": [1,2,3], "ENE611": [1,2]};
+async function load_course_list() {
+    let courseList = await getFetch(getAllStudentsAPI);
     return courseList;
 }
 
@@ -42,7 +42,7 @@ function create_course_list() {
 function create_section_list(courseId) {
     for (course in load_course_list()) {
         if(course == courseId) {
-            
+
         }
     }
     let courseSections = load_course_list().find(courseId.value);

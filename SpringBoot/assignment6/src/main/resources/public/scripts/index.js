@@ -27,8 +27,6 @@ function postFetch(api, data) {
             data
         )
     })
-    // .then(response => response.json())
-    // .then(data => console.log(data))
 }
 
 //get from server

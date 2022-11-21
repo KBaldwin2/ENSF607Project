@@ -18,7 +18,7 @@ function blankFieldAlert(formName) {
 const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
 
-loginForm.addEventListener('submit', function(evt) {
+loginForm.addEventListener('submit', async function(evt) {
   evt.preventDefault();
   console.log('login button clicked');
 
@@ -33,7 +33,8 @@ loginForm.addEventListener('submit', function(evt) {
   let password = loginForm.password.value;
   let studentId = loginForm.studentId.value;
 
-  getFetch(getAllStudentsAPI);
+  let studentsList = await getFetch(getAllStudentsAPI);
+  console.log(studentsList);
 
   //Search for student in database -- if found, login. If not found send alert saying invalid credentials.
   
