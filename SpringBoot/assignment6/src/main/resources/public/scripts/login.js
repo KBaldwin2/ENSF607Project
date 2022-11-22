@@ -37,7 +37,7 @@ loginForm.addEventListener('submit', async function(evt) {
   studentId = loginForm.studentId.value;
 
   let studentsList = await getFetch(getAllStudentsAPI);
-  //load_page("menu.html");
+  load_page("menu.html");
 
   //Search for student in database -- if found, login. If not found send alert saying invalid credentials.
   //Need to figure out how to universally store this 
@@ -65,6 +65,12 @@ registerForm.addEventListener('submit', function(evt) {
 
     postFetch(addStudentAPI, {'username': studentName, 'password': password, 'ucid': studentId});
     load_page("menu.html");
-
   
     });
+
+    //Make a getter and setter to grab ucid
+
+    function getStudentId() {
+      return studentId;
+    }
+

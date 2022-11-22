@@ -1,8 +1,16 @@
 console.log("add.js");
 
-//Receives course information entered and sends it to server
-    //Two possible messages received back:
-    //1. Success! Course has been added.
-    //2. Cannot add course - student already in 6 courses.
+window.addEventListener('load', async function (evt) {
+    evt.preventDefault();
+    console.log('Add page selected');
 
-const course = document.getElementById('menu');
+    idList = await load_course_list(getAllCoursesAPI, 'ucid');
+    let courseIds = document.getElementById('courseIdList'), id=idList;
+    //Iterate through courseIds list and add each as an option in form
+    for(let i = 0; i < idList.length; i++) {
+        let option = document.createElement("OPTION"),
+                    txt = document.createTextNode(idList[i]);
+        option.appendChild(txt);
+        courseIds.insertBefore(option, courseIds.lastChild);
+    }
+});
