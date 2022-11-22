@@ -36,4 +36,12 @@ public class StudentService {
         return studentById.get();
     }
 
+    public Student getStudentByUCID(String UCID) {
+        Optional<Student> studentById = studentRepository.findStudentByUcid(UCID);
+        if (!studentById.isPresent()) {
+            throw new IllegalStateException("student does'nt exist!");
+        }
+        return studentById.get();
+    }
+
 }

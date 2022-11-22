@@ -8,6 +8,7 @@ import course.ensf607.assignment6.course.Course;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.LongAdder;
 
 @RestController
 @RequestMapping(path = "api/v1/student")
@@ -30,15 +31,20 @@ public class StudentController {
         studentService.addNewStudent(student);
     }
 
-    @GetMapping("/{studentId}")
-    public List<String> getStudentEnrollments(@PathVariable Long studentId) {
-        Student selectedStudent = studentService.getStudentById(studentId);
+    @GetMapping("/enrollments/{UCID}")
+    public List<String> getStudentEnrollments(@PathVariable String UCID) {
+        Student selectedStudent = studentService.getStudentByUCID(UCID);
         Set<Course> courseList = selectedStudent.getSubjects();
         List<String> studentCourses = new ArrayList<String>();
         for (Course c : courseList) {
             studentCourses.add(c.getName());
         }
         return studentCourses;
+    }
 
+    @GetMapping("/specific/{UCID}")
+    public Student getStudent(@PathVariable String UCID) {
+        Student selectedStudent = studentService.getStudentByUCID(UCID);
+        return selectedStudent;
     }
 }

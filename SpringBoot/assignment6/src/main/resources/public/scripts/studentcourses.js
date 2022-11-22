@@ -6,11 +6,6 @@ var api = "http://localhost:8080/api/v1/student/";
 //Get Text Box Form Element
 let enrollments = document.getElementById('studentcourseinfo');
 
-async function fetchStudentEnrollments(api) {
-    const response = await getFetch(api);
-    return response.json();
-}
-
 window.addEventListener('load', async function (evt) {
     evt.preventDefault();
     console.log('Student courses page selected');
@@ -21,7 +16,7 @@ window.addEventListener('load', async function (evt) {
     //if no blank fields were found - get values and send to server
     console.log("test fetch");
     var apiString = api.concat(currentStudent);
-    var apiResponse = await fetchStudentEnrollments("http://localhost:8080/api/v1/student/2");
+    var apiResponse = await getFetch("http://localhost:8080/api/v1/student/2");
     if (apiResponse == -1)
         return -1;
     var formattedOutput = ""
