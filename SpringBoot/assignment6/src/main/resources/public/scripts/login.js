@@ -13,12 +13,16 @@ function blankFieldAlert(formName) {
   return false;
 } 
 
+//Stored variables for student
+let studentName;
+let password;
+let studentId;
 
 //LoginButton handler
 const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
 
-loginForm.addEventListener('submit', function(evt) {
+loginForm.addEventListener('submit', async function(evt) {
   evt.preventDefault();
   console.log('login button clicked');
 
@@ -28,14 +32,15 @@ loginForm.addEventListener('submit', function(evt) {
     return -1;
   }
 
-  //if no blank fields were found - save values for student
-  let name = loginForm.name.value;
-  let password = loginForm.password.value;
-  let studentId = loginForm.studentId.value;
+  studentName = loginForm.name.value;
+  password = loginForm.password.value;
+  studentId = loginForm.studentId.value;
 
-  getFetch(getAllStudentsAPI);
+  let studentsList = await getFetch(getAllStudentsAPI);
+  //load_page("menu.html");
 
   //Search for student in database -- if found, login. If not found send alert saying invalid credentials.
+  //Need to figure out how to universally store this 
   
   });
 
@@ -51,16 +56,15 @@ registerForm.addEventListener('submit', function(evt) {
     }
   
     //if no blank fields were found - get values and send to server
-    let name = registerForm.name.value;
-    let password = registerForm.password.value;
-    let studentId = registerForm.studentId.value;
+    studentName = registerForm.name.value;
+    password = registerForm.password.value;
+    studentId = registerForm.studentId.value;
 
-    postFetch(addStudentAPI, {'username': name, 'password': password, 'ucid': studentId});
+      //Search for student in database -- if found, say student exists and please login. 
+      //If not found send a post fetch to the server to add the student and redirect page.
+
+    postFetch(addStudentAPI, {'username': studentName, 'password': password, 'ucid': studentId});
     load_page("menu.html");
-  //Search for student in database -- if found, say student exists and please login. 
-  //If not found send a post fetch to the server to add the student and redirect page.
 
   
     });
-
-    //postFetch(addStudentAPI, {'username': "TEST", 'password': "hello", 'ucid': "99999"});

@@ -1,59 +1,13 @@
 console.log('loadCourseList');
-// postFetch(addNewCourse, );
-// let courseIds = document.getElementById('courseIdList'), id=idList;
 
-// getFetch(getAllStudentsAPI)
-// .then(courseList => {
-//     courseList.forEach ( 
-//     function(course) {
-//         let option = document.createElement("OPTION"),
-//             txt = document.createTextNode(course);
-//         option.appendChild(txt);
-//         courseIds.insertBefore(option, courseIds.lastChild);
-//         }
-// })
-
-// async function searchStudent(id) {
-//   let studentList = await getFetch(getAllStudentsAPI);
-//   let student = studentList.find(id);
-//   if(student == false) {
-//       return false;
-//   }
-//   return true;
-// }
-
-function load_course_list() {
-    let courseList = {"ENSF608": [1,2,3], "ENE611": [1,2]};
+async function load_course_list() {
+    let courseList = await getFetch(getAllStudentsAPI);
     return courseList;
 }
 
-//Create list of course Ids
-function create_course_list() {
-    let idList = [];
 
-    for (key in load_course_list()) {
-        idList.push(key);
-    }   
-
-    console.log(idList);
-    return idList;
-}
-
-function create_section_list(courseId) {
-    for (course in load_course_list()) {
-        if(course == courseId) {
-            
-        }
-    }
-    let courseSections = load_course_list().find(courseId.value);
-    return courseSections;
-}
-
-//Format dropdown menus with courseIds
-
-idList = create_course_list();
+idList = ["ensf500", "ensf600"];
 let courseIds = document.getElementById('courseIdList'), id=idList;
-
 //Iterate through courseIds list and add each as an option in form
 for(let i = 0; i < idList.length; i++) {
     let option = document.createElement("OPTION"),
@@ -62,17 +16,5 @@ for(let i = 0; i < idList.length; i++) {
     courseIds.insertBefore(option, courseIds.lastChild);
 }
 
-//Filter to the sections offered for specific course
-//TODO: Use add.js action event handler to read what course was selected **hardcoded for testing
-sectionList = create_section_list("ENSF609");
-console.log(sectionList);
 
-let courseSections = document.getElementById('courseSectionList'), section=sectionList;
 
-//Format sections dropdown to only have sections for that course
-for(let i = 0; i< sectionList.length; i++) {
-    let option = document.createElement("OPTION"),
-                txt = document.createTextNode(sectionList[i]);
-    option.appendChild(txt);
-    courseSections.insertBefore(option, courseSections.lastChild);
-}

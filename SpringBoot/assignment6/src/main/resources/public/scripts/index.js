@@ -2,6 +2,7 @@
 
 console.log('index');
 
+
 //All api endpoints
 const getAllStudentsAPI = "http://localhost:8080/api/v1/student";
 const addStudentAPI = "http://localhost:8080/api/v1/student";
@@ -27,8 +28,6 @@ function postFetch(api, data) {
             data
         )
     })
-    // .then(response => response.json())
-    // .then(data => console.log(data))
 }
 
 //get from server
@@ -58,6 +57,7 @@ function deleteFetch(api, data) {
             //add a return data
         })
 }
+
 
 
 
