@@ -14,9 +14,6 @@ function load_page(htmlFile) {
     window.location.href = "http://localhost:8080/" + htmlFile;
 }
 
-//post to server
-//TEST API -> https://regres.in/api/users
-//the format of data needs to be {key: [value1, value2]}
 
 function postFetch(api, data) {
     fetch(api, {
@@ -31,14 +28,12 @@ function postFetch(api, data) {
 }
 
 //get from server
-//returns data to console and can be used with an async/await function
 async function getFetch(api) {
     let response = await fetch(api);
     return response.json();
 }
 
-//Delete from server
-//the format of data needs to be {key: [value1, value2]}
+//Delete from server - should not need this**
 function deleteFetch(api, data) {
     //fetch delete
     return fetch(api, {
