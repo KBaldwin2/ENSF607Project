@@ -2,6 +2,14 @@ console.log("menu.js");
 
 const menuForm = document.getElementById('menu');
 
+//Welcome message
+if(sessionStorage.getItem("studentName") === null) {
+    document.getElementById('welcome').innerHTML = "Welcome to student registration!";
+}
+else {
+    document.getElementById('welcome').innerHTML = "Welcome "+sessionStorage.getItem("studentName")+"!";
+}
+
 menuForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
     console.log('register button pressed');
@@ -34,6 +42,7 @@ menuForm.addEventListener('submit', function(evt) {
             break;
         case "quit_command":
             alert("Thanks for registering! You will be logged out now");
+            sessionStorage.clear();
             load_page("login.html");
             break;
         default:
