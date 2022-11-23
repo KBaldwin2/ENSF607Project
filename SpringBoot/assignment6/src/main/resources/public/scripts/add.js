@@ -20,10 +20,21 @@ window.addEventListener('load', async function (evt) {
 });
 
 const courseForm = document.getElementById("CourseList");
+const sectionForm = document.getElementById("CourseSection");
+
 courseForm.addEventListener('submit', async function(evt) {
     evt.preventDefault();
+
+    //save value that was selected in dropdown
+    let selectedCourse = document.getElementById("courseIdList");
+    sessionStorage.setItem("selectedCourse", selectedCourse.value);
+
     // idList = await loadSectionList(api);
+    //HARDCODED TILL WE GET SECTIONS
     idList = ["1", "2", "3"]
+
+    //Populate section list dropdown
+    document.getElementById('defaultSection').innerHTML = "Please choose the section";
     let sections = document.getElementById('courseSectionList'), id=idList;
     for(let i = 0; i < idList.length; i++) {
         let option = document.createElement("OPTION"),
@@ -31,9 +42,12 @@ courseForm.addEventListener('submit', async function(evt) {
         option.appendChild(txt);
         sections.insertBefore(option, sections.lastChild);
     }
-
 });
 
-
-//TO DO: Set up section
-//TO DO: Add actionEventListeners for adding courses
+//When section is selected and submitted
+sectionForm.addEventListener('submit', function(evt) {
+    //Save options from both submits
+    let selectedSection = document.getElementById("courseSectionList");
+    sessionStorage.getItem("selectedCourse");
+    
+});

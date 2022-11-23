@@ -11,7 +11,7 @@ async function load_course_list(api) {
 
 load_course_list(getAllCoursesAPI);
 
-async function loadSectionList(api) {
+async function loadSectionList(api, courseName) {
     let sectionList = await getFetch(api);
     idList = ['1', '2', '3'];
     // sectionList.forEach(section => idList.push(section['SECONDNAME']));
