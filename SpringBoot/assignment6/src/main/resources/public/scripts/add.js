@@ -19,6 +19,5 @@ window.addEventListener('load', async function (evt) {
 });
 
 
-
 //TO DO: Populate section list dropdown 
 //TO DO: Add actionEventListeners for adding courses
