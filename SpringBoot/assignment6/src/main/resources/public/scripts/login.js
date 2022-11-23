@@ -40,21 +40,19 @@ loginForm.addEventListener('submit', async function(evt) {
   let student = await getFetch(getStudent.concat(studentId));
   console.log(student);
 
-  if(student['error'] == "Internal Server Error") {
+  //Searching for invalid credentials
+  if(student['error'] == "Internal Server Error" || student['username'] != studentName || student['password'] != password) {
     alert("Invalid credentials! Please try again or register if you are a new student");
     //clear textboxes
     return -1;
   }
 
-  //if student is found
+  //if student is found - check that the name and password also matches
   sessionStorage.setItem("studentName", studentName);
   sessionStorage.setItem("password", password);
   sessionStorage.setItem("studentId", studentId);
   load_page("menu.html");
 
-  //Search for student in database -- if found, login. If not found send alert saying invalid credentials.
-  //Need to figure out how to universally store this 
-  
   });
 
 
@@ -73,8 +71,8 @@ registerForm.addEventListener('submit', async function(evt) {
     password = registerForm.password.value;
     studentId = registerForm.studentId.value;
 
-      //Search for student in database -- if found, say student exists and please login. 
-      //If not found send a post fetch to the server to add the student and redirect page.
+    //Search for student in database -- if found, say student exists and please login. 
+    //If not found send a post fetch to the server to add the student and redirect page.
 
     let student = await getFetch(getStudent.concat(studentId));
       if(student['error'] == "Internal Server Error") {
@@ -85,7 +83,7 @@ registerForm.addEventListener('submit', async function(evt) {
         load_page("menu.html");
         return 1;
       }
-    //If student does not exist. Post new student to the database. 
+
     alert("We found a user with the entered information. If you are an existing student please log in!");
   
     });

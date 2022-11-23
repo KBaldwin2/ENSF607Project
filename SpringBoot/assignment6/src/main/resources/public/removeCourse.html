@@ -12,15 +12,15 @@
     <h1>Course De-Registration</h1>
 
     <p>
-    <form id="StudentCourseList">
+    <form id="CourseList">
         <br>
         <label for="course">Select the course:</label>
-        <select name="course" id="list_student_courses">
+        <select name="course" id="courseIdList">
             <option value="default">Select Option</option>
         </select>
         <br>
         <br>
-        <button style="margin:5px" , id="add_submit">Submit Course</button>
+        <button style="margin:5px" , type = "submit", id="add_submit">Select Course</button>
     </form>
     </p>
 
@@ -29,15 +29,15 @@
         <br>
         <label for="section">Select the section:</label>
         <select name="section" class="list_options_sections" id="courseSectionList">
-            <option value="Temp1">Select Section</option>
+            <option id="defaultSection", value="Temp1">Please Select Course Prior to Section</option>
         </select>
         <br>
         <br>
-        <button style="margin:5px" , id="add_submit">Add Course</button>
-        <button id="BackMenu">Menu</button>
+        <button style="margin:5px" , id="add_submit", type ="submit">Add Course</button>
     </form>
+    <button id="BackMenu">Menu</button>
     </p>
-    <script src="add.js"></script>
+    <script src="remove.js"></script>
     <script src="index.js"></script>
     <script src="loadCourseList.js"></script>
 </body>

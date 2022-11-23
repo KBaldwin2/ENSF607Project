@@ -3,8 +3,6 @@ console.log("add.js");
 let currentStudent = sessionStorage.getItem("studentId");
 console.log(currentStudent);
 
-//Disable section until course chosen
-
 window.addEventListener('load', async function (evt) {
     evt.preventDefault();
 
@@ -30,11 +28,16 @@ courseForm.addEventListener('submit', async function(evt) {
     sessionStorage.setItem("selectedCourse", selectedCourse.value);
 
     // idList = await loadSectionList(api);
-    //HARDCODED TILL WE GET SECTIONS
+    //TO DO: HARDCODED TILL WE GET SECTIONS
     idList = ["1", "2", "3"]
 
-    //Populate section list dropdown
+    //Remove old sections from dropdown
+    let oldSections = document.getElementById('courseSectionList').options;
+    for(i=oldSections.length; i>0; i--) {
+        oldSections.remove(i);
+    }
 
+    //Populate section list dropdown
     let sections = document.getElementById('courseSectionList'), id=idList;
 
     document.getElementById('defaultSection').innerHTML = "Please choose the section";
@@ -48,9 +51,11 @@ courseForm.addEventListener('submit', async function(evt) {
 
 //When section is selected and submitted
 sectionForm.addEventListener('submit', async function(evt) {
-    //Enroll student to section on submit
-    let selectedSection = document.getElementById("courseSectionList");
-    sessionStorage.getItem("selectedCourse");
-    postFetch(addNewCourse.concat('/', "3", "/students/", 1), {'test': "test"});
-    //let studentEnrollmentsCheck = await getFetch(getStudentEnrollments.concat(currentStudent));
+    console.log("submit button pressed");
+
+    //Send selected section and selected course and current student to enroll student api
+    let selectedSection = document.getElementById("courseSectionList").value;
+    let selectedCourse = sessionStorage.getItem("selectedCourse");
+    
+    //TO DO: Send to API
 });

@@ -26,6 +26,7 @@ if(allCourses['error'] == "Internal Server Error") {
 }
 
 console.log(allCourses);
+console.log(allStudents);
 }
 
 dataLoad();

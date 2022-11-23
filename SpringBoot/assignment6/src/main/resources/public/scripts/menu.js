@@ -43,7 +43,7 @@ menuForm.addEventListener('submit', function(evt) {
         case "quit_command":
             alert("Thanks for registering! You will be logged out now");
             sessionStorage.clear();
-            load_page("login.html");
+            load_page("index.html");
             break;
         default:
             console.log("nothing");
