@@ -1,4 +1,6 @@
 
+async function dataLoad() {
+
 let allStudents = await getFetch(getAllStudentsAPI);
 
 if(allStudents['error'] == "Internal Server Error") {
@@ -23,6 +25,7 @@ if(allCourses['error'] == "Internal Server Error") {
     
 }
 
-postFetch(addNewCourse, {'name': "ENE600",  'startTime': '2022-11-01',  'endTime': "2022-11-04",  "capacity": 6, "hasPrerequisite": "FALSE"})
-postFetch(addNewCourse, {'name': "ENG450",  'startTime': '2022-11-01',  'endTime': "2022-11-04",  "capacity": 6, "hasPrerequisite": "FALSE"})
-postFetch(addNewCourse, {'name': "ENE555",  'startTime': '2022-11-01',  'endTime': "2022-11-04",  "capacity": 6, "hasPrerequisite": "FALSE"})
+console.log(allCourses);
+}
+
+dataLoad();

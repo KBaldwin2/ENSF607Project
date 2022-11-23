@@ -7,7 +7,8 @@ window.addEventListener('load', async function (evt) {
     evt.preventDefault();
     console.log('Add page selected');
 
-    idList = await load_course_list(getAllStudentsAPI);
+    idList = await load_course_list(getAllCoursesAPI);
+    console.log(idList);
     let courseIds = document.getElementById('courseIdList'), id=idList;
     //Iterate through courseIds list and add each as an option in form
     for(let i = 0; i < idList.length; i++) {
@@ -19,5 +20,5 @@ window.addEventListener('load', async function (evt) {
 });
 
 
-//TO DO: Populate section list dropdown 
+//TO DO: Set up section
 //TO DO: Add actionEventListeners for adding courses

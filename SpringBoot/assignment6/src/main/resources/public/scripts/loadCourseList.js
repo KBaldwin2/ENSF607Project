@@ -4,7 +4,7 @@ console.log('loadCourseList');
 async function load_course_list(api) {
     let courseList = await getFetch(api);
     idList = [];
-    courseList.forEach(course => idList.push(course['ucid']));
+    courseList.forEach(course => idList.push(course['name']));
     console.log(idList);
     return idList;
 }
