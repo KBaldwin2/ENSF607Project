@@ -56,6 +56,7 @@ sectionForm.addEventListener('submit', async function(evt) {
     //Send selected section and selected course and current student to enroll student api
     let selectedSection = document.getElementById("courseSectionList").value;
     let selectedCourse = sessionStorage.getItem("selectedCourse");
+    alert("Course Succesfully Added!");
     
     //TO DO: Send to API
 });

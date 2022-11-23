@@ -7,6 +7,11 @@ window.addEventListener('load', async function (evt) {
     evt.preventDefault();
 
     idList = await load_course_list(getStudentEnrollments.concat(currentStudent));
+
+    if(idList.length == 0) {
+        this.document.getElementById("noCourses").innerHTML = "Hmm.. Looks like you are not registered in any courses! Unfortunately you can quit before you even start."
+    }
+
     let courseIds = document.getElementById('courseIdList'), id=idList;
     //Iterate through courseIds list and add each as an option in form
     for(let i = 0; i < idList.length; i++) {
@@ -56,6 +61,7 @@ sectionForm.addEventListener('submit', async function(evt) {
     //Send selected section and selected course and current student to enroll student api
     let selectedSection = document.getElementById("courseSectionList").value;
     let selectedCourse = sessionStorage.getItem("selectedCourse");
+    alert("Course Succesfully removed!");
     
     //TO DO: Send to API
 });

@@ -29,7 +29,7 @@ menuForm.addEventListener('submit', function(evt) {
             load_page("addCourse.html");
             break;
         case "remove_course" :
-            load_page("deleteCourse.html");
+            load_page("removeCourse.html");
             break;
         case "search_course":
             load_page("search.html");
