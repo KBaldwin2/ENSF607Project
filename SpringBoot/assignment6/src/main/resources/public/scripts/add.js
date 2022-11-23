@@ -34,8 +34,10 @@ courseForm.addEventListener('submit', async function(evt) {
     idList = ["1", "2", "3"]
 
     //Populate section list dropdown
-    document.getElementById('defaultSection').innerHTML = "Please choose the section";
+
     let sections = document.getElementById('courseSectionList'), id=idList;
+
+    document.getElementById('defaultSection').innerHTML = "Please choose the section";
     for(let i = 0; i < idList.length; i++) {
         let option = document.createElement("OPTION"),
                     txt = document.createTextNode(idList[i]);
@@ -45,9 +47,10 @@ courseForm.addEventListener('submit', async function(evt) {
 });
 
 //When section is selected and submitted
-sectionForm.addEventListener('submit', function(evt) {
-    //Save options from both submits
+sectionForm.addEventListener('submit', async function(evt) {
+    //Enroll student to section on submit
     let selectedSection = document.getElementById("courseSectionList");
     sessionStorage.getItem("selectedCourse");
-    
+    postFetch(addNewCourse.concat('/', "3", "/students/", 1), {'test': "test"});
+    //let studentEnrollmentsCheck = await getFetch(getStudentEnrollments.concat(currentStudent));
 });

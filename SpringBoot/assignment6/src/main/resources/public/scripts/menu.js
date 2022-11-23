@@ -7,7 +7,7 @@ if(sessionStorage.getItem("studentName") === null) {
     document.getElementById('welcome').innerHTML = "Welcome to student registration!";
 }
 else {
-    document.getElementById('welcome').innerHTML = "Welcome "+sessionStorage.getItem("studentName")+"!";
+    document.getElementById('welcome').innerHTML = "Hi "+sessionStorage.getItem("studentName")+"!";
 }
 
 menuForm.addEventListener('submit', function(evt) {

@@ -8,7 +8,7 @@ const addStudentAPI = "http://localhost:8080/api/v1/student";
 const getAllCoursesAPI = "http://localhost:8080/api/v1/course";
 const addNewCourse = "http://localhost:8080/api/v1/course";
 //Add student Id to end
-const getStudentEnrollments = "http://localhost:8080/api/v1/enrollments/student/";
+const getStudentEnrollments = "http://localhost:8080/api/v1/student/enrollments/";
 //Add ucid to end
 const getStudent = "http://localhost:8080/api/v1/student/specific/";
 
@@ -47,14 +47,14 @@ function deleteFetch(api, data) {
         body: JSON.stringify({
             data
         })
-    }).then(response => {
-        return response.json()
     })
-        .then(data => {
-            console.log(data);
-            //add a return data
-        })
 }
+
+let backToMenu = document.getElementById("BackMenu");
+backToMenu.addEventListener("click", function(evt) {
+    console.log("Menu button clicked");
+    load_page("menu.html");
+});
 
 
 

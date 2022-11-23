@@ -1,7 +1,7 @@
 console.log("studentCourses.js");
 
-var currentStudent = 2;
-var api = "http://localhost:8080/api/v1/student/";
+var currentStudent = sessionStorage.getItem("studentId");
+// var api = "http://localhost:8080/api/v1/student/";
 
 //Get Text Box Form Element
 let enrollments = document.getElementById('studentcourseinfo');
@@ -15,8 +15,9 @@ window.addEventListener('load', async function (evt) {
     }
     //if no blank fields were found - get values and send to server
     console.log("test fetch");
-    var apiString = api.concat(currentStudent);
-    var apiResponse = await getFetch("http://localhost:8080/api/v1/student/enrollments/183");
+    var apiString = getStudentEnrollments.concat(currentStudent);
+    var apiResponse = await getFetch(apiString);
+    console.log(apiResponse);
     if (apiResponse == -1)
         return -1;
     var formattedOutput = ""
@@ -26,9 +27,3 @@ window.addEventListener('load', async function (evt) {
     enrollments.value = formattedOutput;
 });
 
-let submitButton = document.getElementById('BackMenu');
-
-submitButton.addEventListener('click', function (evt) {
-    console.log("Button Clicked!")
-    load_page("Menu.html");
-});
