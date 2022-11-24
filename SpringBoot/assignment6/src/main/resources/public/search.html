@@ -6,30 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Course</title>
+    <link rel="stylesheet" href="styles/formStyle.css">
 </head>
-
-<body>
-    <h1>Course Search</h1>
+<body class="wrapper">
+    <h1 class="text-center mt-4">Course Search</h1>
 
     <p>
-    <form action="/dummy" id="CourseList">
-        <p>
-            <label for="course">Select the course:</label>
-            <select name="course" class="list_options_course">
-                <option value="Temp1">Temp1</option>
-                <option value="Temp2">Temp2</option>
-                <option value="Temp3">Temp3</option>
+    <form id="CourseList">
+            <label for="course" class="text-center mt-4 name">Select the course:</label>
+            <select name="course" class="list_options_course" id="courseIdList">
+                <option value="default">Select Option</option>
             </select>
-            <button style="margin:5px" , id="searchcourse_submit">Submit</button>
-        <p>
-            <label for="CourseInfo">Results</label>
-            <br>
-            <textarea name="CourseInfo" id="courseinfo" cols="30" rows="10"
-                placeholder="Course Results Here"></textarea>
-        </p>
+            <button style="margin:5px" , type = "submit", id="searchcourse_submit" class="btn mt-3">Search</button>
     </form>
+    <p>
+        <label for="CourseInfo">Results</label> 
+        <br>
+        <textarea name="CourseInfo" id="courseinfo" cols="50" rows="10"
+            placeholder="Course Results Here"></textarea>
     </p>
+    
 </body>
-<button id="BackMenu">Menu</button>
+<button id="BackMenu" class="btn mt-3">Menu</button>
+
+<script src ="scripts/search.js"></script>
+<script src ="scripts/index.js"></script>
+<script src ="scripts/loadCourseList.js"></script>
 
 </html>

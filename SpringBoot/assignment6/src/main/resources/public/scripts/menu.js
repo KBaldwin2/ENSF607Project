@@ -2,6 +2,14 @@ console.log("menu.js");
 
 const menuForm = document.getElementById('menu');
 
+//Welcome message
+if(sessionStorage.getItem("studentName") === null) {
+    document.getElementById('welcome').innerHTML = "Welcome to student registration!";
+}
+else {
+    document.getElementById('welcome').innerHTML = "Hi "+sessionStorage.getItem("studentName")+"!";
+}
+
 menuForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
     console.log('register button pressed');
@@ -21,7 +29,7 @@ menuForm.addEventListener('submit', function(evt) {
             load_page("addCourse.html");
             break;
         case "remove_course" :
-            load_page("deleteCourse.html");
+            load_page("removeCourse.html");
             break;
         case "search_course":
             load_page("search.html");
@@ -34,7 +42,8 @@ menuForm.addEventListener('submit', function(evt) {
             break;
         case "quit_command":
             alert("Thanks for registering! You will be logged out now");
-            load_page("login.html");
+            sessionStorage.clear();
+            load_page("index.html");
             break;
         default:
             console.log("nothing");

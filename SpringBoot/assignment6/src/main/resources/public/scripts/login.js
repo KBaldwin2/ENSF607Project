@@ -36,16 +36,27 @@ loginForm.addEventListener('submit', async function(evt) {
   password = loginForm.password.value;
   studentId = loginForm.studentId.value;
 
-  let studentsList = await getFetch(getAllStudentsAPI);
+  //Search for student in database
+  let student = await getFetch(getStudent.concat(studentId));
+  console.log(student);
+
+  //Searching for invalid credentials
+  if(student['error'] == "Internal Server Error" || student['username'] != studentName || student['password'] != password) {
+    alert("Invalid credentials! Please try again or register if you are a new student");
+    //clear textboxes
+    return -1;
+  }
+
+  //if student is found - check that the name and password also matches
+  sessionStorage.setItem("studentName", studentName);
+  sessionStorage.setItem("password", password);
+  sessionStorage.setItem("studentId", studentId);
   load_page("menu.html");
 
-  //Search for student in database -- if found, login. If not found send alert saying invalid credentials.
-  //Need to figure out how to universally store this 
-  
   });
 
 
-registerForm.addEventListener('submit', function(evt) {
+registerForm.addEventListener('submit', async function(evt) {
     evt.preventDefault();
     console.log('register button clicked');
   
@@ -60,17 +71,23 @@ registerForm.addEventListener('submit', function(evt) {
     password = registerForm.password.value;
     studentId = registerForm.studentId.value;
 
-      //Search for student in database -- if found, say student exists and please login. 
-      //If not found send a post fetch to the server to add the student and redirect page.
+    //Search for student in database -- if found, say student exists and please login. 
+    //If not found send a post fetch to the server to add the student and redirect page.
 
-    postFetch(addStudentAPI, {'username': studentName, 'password': password, 'ucid': studentId});
-    load_page("menu.html");
+    let student = await getFetch(getStudent.concat(studentId));
+      if(student['error'] == "Internal Server Error") {
+        sessionStorage.setItem("studentName", studentName);
+        sessionStorage.setItem("password", password);
+        sessionStorage.setItem("studentId", studentId);
+        postFetch(addStudentAPI, {'username': studentName, 'password': password, 'ucid': studentId});
+        load_page("menu.html");
+        return 1;
+      }
+
+    alert("We found a user with the entered information. If you are an existing student please log in!");
   
     });
 
-    //Make a getter and setter to grab ucid
 
-    function getStudentId() {
-      return studentId;
-    }
+
 
