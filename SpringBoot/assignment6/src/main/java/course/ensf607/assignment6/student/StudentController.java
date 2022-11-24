@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import course.ensf607.assignment6.course.Course;
+import course.ensf607.assignment6.section.Section;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.atomic.LongAdder;
 
 @RestController
 @RequestMapping(path = "api/v1/student")
@@ -34,10 +34,10 @@ public class StudentController {
     @GetMapping("/enrollments/{UCID}")
     public List<String> getStudentEnrollments(@PathVariable String UCID) {
         Student selectedStudent = studentService.getStudentByUCID(UCID);
-        Set<Course> courseList = selectedStudent.getSubjects();
+        Set<Section> sectionList = selectedStudent.getSubjects();
         List<String> studentCourses = new ArrayList<String>();
-        for (Course c : courseList) {
-            studentCourses.add(c.getName());
+        for (Section c : sectionList) {
+            studentCourses.add(c.getCourse().iterator().next().getName());
         }
         return studentCourses;
     }

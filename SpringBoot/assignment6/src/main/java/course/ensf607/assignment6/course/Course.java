@@ -1,5 +1,6 @@
 package course.ensf607.assignment6.course;
 
+import course.ensf607.assignment6.section.Section;
 import course.ensf607.assignment6.student.Student;
 
 import javax.persistence.*;
@@ -28,31 +29,31 @@ public class Course implements Serializable {
     private Boolean hasPrerequisite;
 
     @ManyToMany
-    @JoinTable(name = "student_enrolled", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private Set<Student> enrolledStudents = new HashSet<>();
+    @JoinTable(name = "section_enrolled", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "section_id"))
+    private Set<Section> enrolledSections = new HashSet<>();
 
     public Course() {
     }
 
     public Course(Long id, String name, LocalDate startTime, LocalDate endTime, Integer capacity,
-            Boolean hasPrerequisite, Set<Student> enrolledStudents) {
+            Boolean hasPrerequisite, Set<Section> enrolledSections) {
         this.id = id;
         this.name = name;
         this.startTime = startTime;
         this.endTime = endTime;
         this.capacity = capacity;
         this.hasPrerequisite = hasPrerequisite;
-        this.enrolledStudents = enrolledStudents;
+        this.enrolledSections = enrolledSections;
     }
 
     public Course(String name, LocalDate startTime, LocalDate endTime, Integer capacity, Boolean hasPrerequisite,
-            Set<Student> enrolledStudents) {
+            Set<Section> enrolledSections) {
         this.name = name;
         this.startTime = startTime;
         this.endTime = endTime;
         this.capacity = capacity;
         this.hasPrerequisite = hasPrerequisite;
-        this.enrolledStudents = enrolledStudents;
+        this.enrolledSections = enrolledSections;
     }
 
     public Long getId() {
@@ -109,20 +110,21 @@ public class Course implements Serializable {
         return this;
     }
 
-    public Set<Student> getEnrolledStudents() {
-        return enrolledStudents;
+    public Set<Section> getEnrolledSections() {
+        return enrolledSections;
     }
 
-    public Course setEnrolledStudents(Set<Student> enrolledStudents) {
-        this.enrolledStudents = enrolledStudents;
+    public Course setEnrolledSections(Set<Section> enrolledSection) {
+        this.enrolledSections = enrolledSection;
         return this;
     }
 
-    public void enrolledStudents(Student student) {
-        enrolledStudents.add(student);
+    public void enrolledSections(Section section) {
+        enrolledSections.add(section);
     }
 
-    public void deenrolStudents(Student student) {
-        enrolledStudents.remove(student);
+    public void deenrolSection(Section section) {
+        enrolledSections.remove(section);
     }
+
 }

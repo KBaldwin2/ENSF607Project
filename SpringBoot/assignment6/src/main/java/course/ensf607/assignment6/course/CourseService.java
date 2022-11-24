@@ -21,7 +21,7 @@ public class CourseService {
     }
 
     public void addNewCourse(Course course) {
-        Optional<Course> courseByName = courseRepository.findByName(course.getName());
+        Optional<Course> courseByName = courseRepository.getCourseByName(course.getName());
         if (courseByName.isPresent()) {
             throw new IllegalStateException("Course already exist!");
         }
@@ -38,5 +38,13 @@ public class CourseService {
             throw new IllegalStateException("Course does'nt exist!");
         }
         return courseById.get();
+    }
+
+    public Course getCourseByName(String courseName) {
+        Optional<Course> courseByName = courseRepository.getCourseByName(courseName);
+        if (!courseByName.isPresent()) {
+            throw new IllegalStateException("Course does'nt exist!");
+        }
+        return courseByName.get();
     }
 }

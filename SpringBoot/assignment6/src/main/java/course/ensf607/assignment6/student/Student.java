@@ -1,7 +1,7 @@
 package course.ensf607.assignment6.student;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import course.ensf607.assignment6.course.Course;
+import course.ensf607.assignment6.section.Section;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,12 +25,12 @@ public class Student implements Serializable {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "enrolledStudents")
-    private Set<Course> subjects = new HashSet<>();
+    private Set<Section> subjects = new HashSet<>();
 
     public Student() {
     }
 
-    public Student(Long id, String username, String password, String ucid, Set<Course> subjects) {
+    public Student(Long id, String username, String password, String ucid, Set<Section> subjects) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -38,7 +38,7 @@ public class Student implements Serializable {
         this.subjects = subjects;
     }
 
-    public Student(String username, String password, String ucid, Set<Course> subjects) {
+    public Student(String username, String password, String ucid, Set<Section> subjects) {
         this.username = username;
         this.password = password;
         this.ucid = ucid;
@@ -81,11 +81,11 @@ public class Student implements Serializable {
         return this;
     }
 
-    public Set<Course> getSubjects() {
+    public Set<Section> getSubjects() {
         return subjects;
     }
 
-    public Student setSubjects(Set<Course> subjects) {
+    public Student setSubjects(Set<Section> subjects) {
         this.subjects = subjects;
         return this;
     }

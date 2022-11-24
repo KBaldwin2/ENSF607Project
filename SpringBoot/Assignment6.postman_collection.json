@@ -27,6 +27,28 @@
 			"response": []
 		},
 		{
+			"name": "findCourseSections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/course/sections/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"course",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "addNewCourse",
 			"request": {
 				"method": "POST",
@@ -51,6 +73,58 @@
 						"api",
 						"v1",
 						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addNewSection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sectionNum\": \"str\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/section/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"section",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllSections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/section",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"section"
 					]
 				}
 			},
@@ -108,12 +182,12 @@
 			"response": []
 		},
 		{
-			"name": "enrollStudentToCourse",
+			"name": "enrollSectionToCourse",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/course/1/students/1",
+					"raw": "http://localhost:8080/api/v1/course/str/section",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -123,21 +197,20 @@
 						"api",
 						"v1",
 						"course",
-						"1",
-						"students",
-						"1"
+						"str",
+						"section"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "deenrolStudentsfromCourse",
+			"name": "deenrolSectionfromCourse",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/course/1/students/1",
+					"raw": "http://localhost:8080/api/v1/course/str/section/str",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -147,9 +220,61 @@
 						"api",
 						"v1",
 						"course",
-						"1",
+						"str",
+						"section",
+						"str"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "enrollStudentToSection",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/section/str/course/str/students/str",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"section",
+						"str",
+						"course",
+						"str",
 						"students",
-						"1"
+						"str"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deenrolStudentfromSection",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/section/str/course/str/students/str",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"section",
+						"str",
+						"course",
+						"str",
+						"students",
+						"str"
 					]
 				}
 			},
