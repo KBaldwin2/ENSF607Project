@@ -26,5 +26,4 @@ courseForm.addEventListener('submit', async function(evt) {
     console.log(courseList);
     document.getElementById("courseinfo").innerHTML = "Here you go";
 
-
 });
