@@ -26,13 +26,14 @@ if(allCourses['error'] == "Internal Server Error") {
     
 }
 
-let sectionPut = await putFetch("http://localhost:8080/api/v1/course/ENSF607/section");
-console.log(sectionPut);
-putFetch("http://localhost:8080/api/v1/course/ENSF607/section");
-let section = await(getCourseSections.concat("ENSF607"));
+// let sectionPut = await putFetch("http://localhost:8080/api/v1/course/ENSF607/section");
+// console.log(sectionPut);
+// putFetch("http://localhost:8080/api/v1/course/ENSF607/section");
+// let section = await getFetch(getCourseSections.concat("ENSF607"));
+// console.log(section);
 
-console.log(allCourses);
-console.log(allStudents);
+// console.log(allCourses);
+// console.log(allStudents);
 }
 
 dataLoad();

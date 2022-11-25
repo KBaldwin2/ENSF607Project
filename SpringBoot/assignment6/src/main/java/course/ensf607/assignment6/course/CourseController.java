@@ -47,8 +47,7 @@ public class CourseController {
     }
 
     @PutMapping("{courseName}/section")
-    public Course enrollSectionToCourse(@PathVariable String courseName,
-            @PathVariable String sectionNum) {
+    public Course enrollSectionToCourse(@PathVariable String courseName) {
         Course course = courseService.getCourseByName(courseName);
         String sectionIndex = Integer.toString(course.getEnrolledSections().size() + 1);
         Section section = new Section(sectionIndex, null, null);
