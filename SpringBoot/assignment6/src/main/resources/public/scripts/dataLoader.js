@@ -22,8 +22,14 @@ if(allCourses['error'] == "Internal Server Error") {
     postFetch(addNewCourse, {'name': "ENE600",  'startTime': '2022-11-01',  'endTime': "2022-11-04",  "capacity": 6, "hasPrerequisite": "FALSE"})
     postFetch(addNewCourse, {'name': "ENG450",  'startTime': '2022-11-01',  'endTime': "2022-11-04",  "capacity": 6, "hasPrerequisite": "FALSE"})
     postFetch(addNewCourse, {'name': "ENE555",  'startTime': '2022-11-01',  'endTime': "2022-11-04",  "capacity": 6, "hasPrerequisite": "FALSE"})
+
     
 }
+
+let sectionPut = await putFetch("http://localhost:8080/api/v1/course/ENSF607/section");
+console.log(sectionPut);
+putFetch("http://localhost:8080/api/v1/course/ENSF607/section");
+let section = await(getCourseSections.concat("ENSF607"));
 
 console.log(allCourses);
 console.log(allStudents);

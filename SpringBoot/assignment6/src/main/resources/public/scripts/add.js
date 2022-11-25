@@ -27,9 +27,9 @@ courseForm.addEventListener('submit', async function(evt) {
     let selectedCourse = document.getElementById("courseIdList");
     sessionStorage.setItem("selectedCourse", selectedCourse.value);
 
-    // idList = await loadSectionList(api);
+    idList = await loadSectionList(getCourseSections.concat(sessionStorage.getItem("selectedCourse")));
     //TO DO: HARDCODED TILL WE GET SECTIONS
-    idList = ["1", "2", "3"]
+    // idList = ["1", "2", "3"]
 
     //Remove old sections from dropdown
     let oldSections = document.getElementById('courseSectionList').options;

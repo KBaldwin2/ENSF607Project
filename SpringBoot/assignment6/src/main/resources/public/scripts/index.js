@@ -11,6 +11,7 @@ const addNewCourse = "http://localhost:8080/api/v1/course";
 const getStudentEnrollments = "http://localhost:8080/api/v1/student/enrollments/";
 //Add ucid to end
 const getStudent = "http://localhost:8080/api/v1/student/specific/";
+const getCourseSections = "http://localhost:8080/api/v1/course/sections/";
 
 
 //Load new html address
@@ -47,6 +48,12 @@ function deleteFetch(api, data) {
         body: JSON.stringify({
             data
         })
+    })
+}
+
+function putFetch(api) {
+    fetch(api, {
+        method: 'PUT'
     })
 }
 

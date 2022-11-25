@@ -26,6 +26,17 @@ courseForm.addEventListener('submit', async function(evt) {
     let courseSearched = document.getElementById("courseIdList").value;
     console.log(courseSearched);
     sessionStorage.setItem("courseSearched", courseSearched);
-    document.getElementById("courseinfo").innerHTML = "Here is the information for " +courseSearched+": \n";
+    let allCourse = await getFetch(getAllCoursesAPI);
+    console.log(allCourse);
+    idList = [];
+    allCourse.forEach(course => {
+                                if(course['name'] == courseSearched) {
+                                    idList.push("\nCourse Name: "+course['name']+"\nHas Prerequisites: "+course['hasPrerequisite']+" \nCourse Capacity: "+course['capacity'] 
+                                    + " \nCourse Sections: " +(course['enrolledSections'].length==0 ? "No sections available": course['enrolledSections']))
+                                }
+                            });
+    document.getElementById("courseinfo").innerHTML = "Here is the information for " +courseSearched+": \n"+idList;
+    
+
 
 });

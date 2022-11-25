@@ -30,7 +30,7 @@ public class SectionController {
     @GetMapping
     public List<Section> getAllSections() {
         return sectionService.getAllSection();
-    }
+    } 
 
     @PostMapping("{courseName}")
     public void registerNewSection(@RequestBody Section section, @PathVariable String courseName) {

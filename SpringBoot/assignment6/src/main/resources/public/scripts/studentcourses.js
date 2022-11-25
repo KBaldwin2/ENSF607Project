@@ -18,12 +18,14 @@ window.addEventListener('load', async function (evt) {
     var apiString = getStudentEnrollments.concat(currentStudent);
     var apiResponse = await getFetch(apiString);
     console.log(apiResponse);
-    if (apiResponse == -1)
+    if (apiResponse.length == 0) {
+        enrollments.innerHTML = "No enrolled courses found";
         return -1;
+    }
     var formattedOutput = ""
     for (var i = 0; i < apiResponse.length; i++) {
         formattedOutput += i + 1 + ") " + apiResponse[i] + "\n";
     }
-    enrollments.value = formattedOutput;
-});
+    enrollments.innerHTML = formattedOutput;
+}); 
 

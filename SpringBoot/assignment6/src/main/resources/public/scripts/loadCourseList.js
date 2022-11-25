@@ -9,10 +9,10 @@ async function load_course_list(api) {
     return idList;
 }
 
-async function loadSectionList(api, courseName) {
+async function loadSectionList(api) {
     let sectionList = await getFetch(api);
-    idList = ['1', '2', '3'];
-    // sectionList.forEach(section => idList.push(section['SECONDNAME']));
+    idList = [];
+    sectionList.forEach(section => idList.push(section));
     console.log(idList);
     return idList;
 }

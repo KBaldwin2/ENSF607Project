@@ -58,7 +58,7 @@ public class CourseController {
         return course;
     }
 
-    @DeleteMapping("{courseName}/section/{SectionNum}")
+    @DeleteMapping("{courseName}/section/{sectionNum}")
     public Course deenrolSectionfromCourse(@PathVariable String courseName,
             @PathVariable String sectionNum) {
         Course course = courseService.getCourseByName(courseName);
