@@ -31,8 +31,15 @@ courseForm.addEventListener('submit', async function(evt) {
     idList = [];
     allCourse.forEach(course => {
                                 if(course['name'] == courseSearched) {
-                                    idList.push("\nCourse Name: "+course['name']+"\nHas Prerequisites: "+course['hasPrerequisite']+" \nCourse Capacity: "+course['capacity'] 
-                                    + " \nCourse Sections: " +(course['enrolledSections'].length==0 ? "No sections available": course['enrolledSections']))
+                                    idList.push("\nCourse Name: "+course['name']+"\nHas Prerequisites: "+course['hasPrerequisite']+" \nCourse Capacity: "+course['capacity'])
+                                    sectionList = [];
+                                    if(course['enrolledSections'].length==0) {
+                                        sectionList.push("No sections available");
+                                    }
+                                    else {
+                                        course['enrolledSections'].forEach(section => sectionList.push(" "+section['sectionNum']+" "));
+                                    }
+                                    idList.push("\nCourse Sections Available:" +sectionList);
                                 }
                             });
     document.getElementById("courseinfo").innerHTML = "Here is the information for " +courseSearched+": \n"+idList;
