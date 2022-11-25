@@ -4,6 +4,8 @@ import course.ensf607.assignment6.course.Course;
 import course.ensf607.assignment6.course.CourseService;
 import course.ensf607.assignment6.student.Student;
 import course.ensf607.assignment6.student.StudentService;
+import net.bytebuddy.implementation.bytecode.Throw;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +32,7 @@ public class SectionController {
     @GetMapping
     public List<Section> getAllSections() {
         return sectionService.getAllSection();
-    } 
+    }
 
     @PostMapping("{courseName}")
     public void registerNewSection(@RequestBody Section section, @PathVariable String courseName) {
@@ -69,6 +71,6 @@ public class SectionController {
                 return s;
             }
         }
-        return null;
+        throw new IllegalStateException("Enrollment didn't work!");
     }
 }
