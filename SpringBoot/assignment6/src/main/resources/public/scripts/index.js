@@ -38,16 +38,9 @@ async function getFetch(api) {
 }
 
 //Delete from server - should not need this**
-function deleteFetch(api, data) {
-    //fetch delete
-    return fetch(api, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            data
-        })
+function deleteFetch(api) {
+    fetch(api, {
+        method: 'DELETE'
     })
 }
 
