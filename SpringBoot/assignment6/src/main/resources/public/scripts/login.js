@@ -44,6 +44,7 @@ loginForm.addEventListener('submit', async function(evt) {
   if(student['error'] == "Internal Server Error" || student['username'] != studentName || student['password'] != password) {
     alert("Invalid credentials! Please try again or register if you are a new student");
     //clear textboxes
+    
     return -1;
   }
 

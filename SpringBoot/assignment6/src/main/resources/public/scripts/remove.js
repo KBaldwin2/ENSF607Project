@@ -6,7 +6,9 @@ console.log(currentStudent);
 window.addEventListener('load', async function (evt) {
     evt.preventDefault();
 
-    idList = await load_course_list(getStudentEnrollments.concat(currentStudent));
+    courses = await getFetch("http://localhost:8080/api/v1/student/enrollments/"+currentStudent);
+    idList = [];
+    courses.forEach(course => idList.push(course[0]));
 
     if(idList.length == 0) {
         this.document.getElementById("noCourses").innerHTML = "Hmm.. Looks like you are not registered in any courses! Unfortunately you can quit before you even start."
@@ -32,9 +34,9 @@ courseForm.addEventListener('submit', async function(evt) {
     let selectedCourse = document.getElementById("courseIdList");
     sessionStorage.setItem("selectedCourse", selectedCourse.value);
 
-    // idList = await loadSectionList(api);
-    //TO DO: HARDCODED TILL WE GET SECTIONS
-    idList = ["1", "2", "3"]
+    sectionList = await getFetch("http://localhost:8080/api/v1/student/enrollments/"+currentStudent);
+    idList = [];
+    sectionList.forEach(section => (section[0]==sessionStorage.getItem("selectedCourse") ? idList.push(section[1]): null));
 
     //Remove old sections from dropdown
     let oldSections = document.getElementById('courseSectionList').options;
@@ -61,7 +63,7 @@ sectionForm.addEventListener('submit', async function(evt) {
     //Send selected section and selected course and current student to enroll student api
     let selectedSection = document.getElementById("courseSectionList").value;
     let selectedCourse = sessionStorage.getItem("selectedCourse");
+    deleteFetch("http://localhost:8080/api/v1/section/"+selectedSection+"/course/"+selectedCourse+"/students/"+currentStudent);
     alert("Course Succesfully removed!");
     
-    //TO DO: Send to API
 });

@@ -32,13 +32,19 @@ public class StudentController {
     }
 
     @GetMapping("/enrollments/{UCID}")
-    public List<String> getStudentEnrollments(@PathVariable String UCID) {
+    public List<List<String>> getStudentEnrollments(@PathVariable String UCID) {
         Student selectedStudent = studentService.getStudentByUCID(UCID);
         Set<Section> sectionList = selectedStudent.getSubjects();
-        List<String> studentCourses = new ArrayList<String>();
+        List<List<String>> studentCourses = new ArrayList<>();
+        
         for (Section c : sectionList) {
-            studentCourses.add(c.getCourse().iterator().next().getName());
+            List<String> courseSection = new ArrayList<>();
+            courseSection.add(c.getCourse().iterator().next().getName());
+            courseSection.add(c.getSectionNum());
+            studentCourses.add(courseSection);
+            
         }
+        
         return studentCourses;
     }
 

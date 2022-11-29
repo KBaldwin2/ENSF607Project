@@ -28,8 +28,6 @@ courseForm.addEventListener('submit', async function(evt) {
     sessionStorage.setItem("selectedCourse", selectedCourse.value);
 
     idList = await loadSectionList(getCourseSections.concat(sessionStorage.getItem("selectedCourse")));
-    //TO DO: HARDCODED TILL WE GET SECTIONS
-    // idList = ["1", "2", "3"]
 
     //Remove old sections from dropdown
     let oldSections = document.getElementById('courseSectionList').options;
@@ -56,7 +54,7 @@ sectionForm.addEventListener('submit', async function(evt) {
     //Send selected section and selected course and current student to enroll student api
     let selectedSection = document.getElementById("courseSectionList").value;
     let selectedCourse = sessionStorage.getItem("selectedCourse");
+    putFetch("http://localhost:8080/api/v1/section/"+selectedSection+"/course/"+selectedCourse+"/students/"+currentStudent);
     alert("Course Succesfully Added!");
-    
-    //TO DO: Send to API
+
 });

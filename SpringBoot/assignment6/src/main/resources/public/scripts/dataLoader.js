@@ -3,7 +3,7 @@ async function dataLoad() {
 
 let allStudents = await getFetch(getAllStudentsAPI);
 
-if(allStudents['error'] == "Internal Server Error") {
+if(allStudents.length == 0) {
     console.log("Student Dataloader Executed");
     postFetch(addStudentAPI, {'username': 'Sally', 'password': 'sally', 'ucid': '900'});
     postFetch(addStudentAPI, {'username': 'Denise', 'password': 'denise', 'ucid': '750'});
@@ -14,7 +14,7 @@ if(allStudents['error'] == "Internal Server Error") {
 }
 
 let allCourses = await getFetch(getAllCoursesAPI);
-if(allCourses['error'] == "Internal Server Error") {
+if(allCourses.length == 0) {
     console.log("Course Dataloader Executed");
     postFetch(addNewCourse, {'name': "ENSF607",  'startTime': '2022-11-01',  'endTime': "2022-11-04",  "capacity": 6, "hasPrerequisite": "FALSE"})
     postFetch(addNewCourse, {'name': "ENSF611",  'startTime': '2022-11-01',  'endTime': "2022-11-04",  "capacity": 6, "hasPrerequisite": "TRUE"})
