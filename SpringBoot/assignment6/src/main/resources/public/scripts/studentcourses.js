@@ -24,7 +24,7 @@ window.addEventListener('load', async function (evt) {
     }
     var formattedOutput = ""
     for (var i = 0; i < apiResponse.length; i++) {
-        formattedOutput += i + 1 + ") " + apiResponse[i] + "\n";
+        formattedOutput += i + 1 + ") " + apiResponse[i][0] + "\n";
     }
     enrollments.innerHTML = formattedOutput;
 }); 
