@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -38,6 +40,7 @@ public class CourseController {
         for (Section s : sectionList) {
             courseSections.add(s.getSectionNum());
         }
+        Collections.sort(courseSections);
         return courseSections;
     }
 
@@ -54,6 +57,13 @@ public class CourseController {
         sectionService.addNewSection(section);
         course.enrolledSections(section);
         courseService.updateCourse(course);
+        return course;
+    }
+
+    @PutMapping("/updateCourse/OldName/{oldName}/NewName/{newName}")
+    public Course updateCourseName(@PathVariable String oldName, @PathVariable String newName) {
+        Course course = courseService.getCourseByName(oldName);
+        courseService.updateCourse(course.setName(newName));
         return course;
     }
 

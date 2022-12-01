@@ -34,7 +34,7 @@ public class SectionController {
         return sectionService.getAllSection();
     }
 
-    @PostMapping("{courseName}")
+    @PostMapping()
     public void registerNewSection(@RequestBody Section section, @PathVariable String courseName) {
         sectionService.addNewSection(section);
     }
@@ -49,9 +49,13 @@ public class SectionController {
 
         for (Section s : course.getEnrolledSections()) {
             if (s.getSectionNum().equals(sectionNum)) {
-                s.enrolledStudents(student);
-                sectionService.updateSection(s);
-                return s;
+                if (!s.getEnrolledStudents().contains(student)) {
+                    s.enrolledStudents(student);
+                    sectionService.updateSection(s);
+                    return s;
+                } else {
+                    throw new IllegalStateException("Duplicate enrollment error!");
+                }
             }
         }
         return null;
@@ -71,6 +75,6 @@ public class SectionController {
                 return s;
             }
         }
-        throw new IllegalStateException("Enrollment didn't work!");
+        throw new IllegalStateException("De-enrollment didn't work!");
     }
 }

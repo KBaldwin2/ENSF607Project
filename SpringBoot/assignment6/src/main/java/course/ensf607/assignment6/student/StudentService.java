@@ -44,4 +44,11 @@ public class StudentService {
         return studentById.get();
     }
 
+    public void removeCourse(Student student) {
+        try {
+            studentRepository.delete(student);
+        } catch (Exception e) {
+            throw new IllegalStateException("Student could not be removed");
+        }
+    }
 }

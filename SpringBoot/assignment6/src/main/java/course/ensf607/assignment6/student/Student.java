@@ -24,7 +24,7 @@ public class Student implements Serializable {
     private String ucid;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "enrolledStudents")
+    @ManyToMany(mappedBy = "enrolledStudents", cascade = CascadeType.ALL)
     private Set<Section> subjects = new HashSet<>();
 
     public Student() {
@@ -88,5 +88,11 @@ public class Student implements Serializable {
     public Student setSubjects(Set<Section> subjects) {
         this.subjects = subjects;
         return this;
+    }
+
+    public void removeALLSections() {
+        if (this.subjects.isEmpty())
+            return;
+        this.subjects.clear();
     }
 }

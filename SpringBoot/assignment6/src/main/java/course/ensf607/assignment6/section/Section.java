@@ -24,7 +24,7 @@ public class Section implements Serializable {
 
     private String SectionNum;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "student_enrolled", joinColumns = @JoinColumn(name = "section_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
     private Set<Student> enrolledStudents = new HashSet<>();
 
